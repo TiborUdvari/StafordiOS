@@ -10,9 +10,25 @@
 
 @interface CardGameViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) NSUInteger flipsCount;
+
 @end
 
 @implementation CardGameViewController
+
+-(void) setFlipsCount:(NSUInteger)flipsCount
+{
+    _flipsCount = flipsCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipsCount];
+}
+
+
+- (IBAction)flipCard:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    self.flipsCount++;
+}
 
 - (void)viewDidLoad
 {
